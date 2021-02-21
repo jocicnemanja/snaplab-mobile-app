@@ -31,7 +31,7 @@ const TakePhoto = ({onTakePhoto}) => {
             camera.takePictureAsync(options)
                 .then(photo => {
                     console.log('Picture taken', photo)
-                    onTakePhoto();
+                    onTakePhoto({id: Math.random().toString(), title: "Nivea krema"});
                     return photo;
                 })
                 .catch(e => console.log('My ERROR', e))

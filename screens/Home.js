@@ -1,47 +1,55 @@
-import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import Header from "../components/Header";
+import {StyleSheet, Text, View} from "react-native";
 import React from "react";
+import ProductList from "../components/ProductList";
+import AddProductButton from "../components/AddProductButton";
 
-const Home = ({onAddProduct}) => {
+const Home = ({onAddProduct, onProductRemove, products}) => {
+
     const handleAddProduct = () => {
-        console.log("OPEN camera"); onAddProduct()};
+        onAddProduct()
+    };
+
+    const handleRemoveProduct = (product) => {
+        onProductRemove(product)
+    }
+
+    const view = products.length > 0 ?
+        <View style={styles.screen}>
+            <ProductList onProductRemove={(product) => handleRemoveProduct(product)} products={products}/>
+        </View>
+        :
+        <View style={styles.screenMessage}>
+            <Text style={styles.description}>Click on "+" button, it will open camera, then take a picture of the
+                product ingredients. It is usually located on the back of the product.</Text>
+            <Text style={styles.description}>Take a picture stay healthy!</Text>
+        </View>
+
     return (
-        <View style={styles.container}>
-            <Header/>
-            <View style={styles.addProduct}>
-                <TouchableOpacity style={styles.addProductBtn}>
-                    <Text style={styles.addProductBtnText} onPress={handleAddProduct}>Let's start</Text>
-                </TouchableOpacity>
-            </View>
-        </View>);
+        <View style={{flex:1}}>
+            {view}
+            <AddProductButton onAddProduct={handleAddProduct} />
+        </View>
+    );
 }
 
 
 const styles = StyleSheet.create({
-
-    container: {
+    screenMessage: {
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'stretch',
+        alignItems: 'center',
+        backgroundColor: "snow",
     },
-    addProduct: {
-        flex: 7, justifyContent: 'flex-end',
-        alignItems: 'center', backgroundColor: "whitesmoke"
+    screen: {
+        flex: 1,
     },
-    addProductBtn: {
-        width: "70%",
-        backgroundColor: "black",
-        borderRadius: 25,
-        height: 50,
-        alignItems: "center",
-        justifyContent: "center",
-        marginBottom: "10%"
-    },
-    addProductBtnText: {
-        color: "white",
-        fontSize: 18,
-        fontWeight: "bold"
+    description: {
+        color: "black",
+        fontSize: 15,
+        fontWeight: "bold",
+        textAlign: 'center',
+        padding: "3%"
     },
 });
 

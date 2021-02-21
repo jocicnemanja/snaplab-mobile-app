@@ -15,16 +15,23 @@ const Header = () => {
 
 const styles = StyleSheet.create({
     header: {
-        flex: 1,
-        justifyContent: 'space-between',
+        height: 90,
+        paddingTop:36,
+        justifyContent: 'center',
         alignItems: "center",
-        flexDirection: "row"
+        flexDirection: "row",
+        backgroundColor: "white",
+        shadowColor: "black",
+        shadowOffset: {
+            width:0,
+            height:2
+        },
+        shadowRadius:6,
+        elevation: 5,
     },
     logo: {
         width: 120,
         height: 120,
-        marginLeft: "2%",
-        marginTop: "10%"
     },
 });
 
