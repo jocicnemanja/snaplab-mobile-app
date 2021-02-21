@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "react-native-scan4carcinogens",
-    "slug": "react-native-scan4carcinogens",
+    "name": "scan4carcinogens",
+    "slug": "scan4carcinogens",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/snaplabicon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
