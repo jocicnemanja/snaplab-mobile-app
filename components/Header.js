@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
             height:2
         },
         shadowRadius:6,
+
         elevation: 5,
     },
     logo: {

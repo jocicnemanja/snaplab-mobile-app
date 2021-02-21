@@ -21,7 +21,7 @@ const Home = ({onAddProduct, onProductRemove, products}) => {
         <View style={styles.screenMessage}>
             <Text style={styles.description}>Click on "+" button, it will open camera, then take a picture of the
                 product ingredients. It is usually located on the back of the product.</Text>
-            <Text style={styles.description}>Take a picture stay healthy!</Text>
+            <Text style={styles.description}>Take a picture. Stay healthy!</Text>
         </View>
 
     return (
@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: "bold",
         textAlign: 'center',
-        padding: "3%"
+        padding: "3%",
+        lineHeight:20
     },
 });
 

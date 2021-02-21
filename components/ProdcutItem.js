@@ -1,6 +1,6 @@
 import React from "react";
 import {Text, StyleSheet, View, TouchableOpacity} from "react-native";
-import {MaterialIcons} from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 const ProductItem = ({product, onProductRemove}) => {
 
@@ -11,7 +11,7 @@ const ProductItem = ({product, onProductRemove}) => {
         <View style={styles.item}>
             <Text style={styles.itemText}>{product.title}</Text>
             <TouchableOpacity onPress={() => handleRemoveProduct(product)}>
-                <MaterialIcons name="delete" size={24} color="black"/>
+                <Ionicons name="close" size={24} color="black" />
             </TouchableOpacity>
         </View>
     );
@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: "bold",
         textAlign: 'center',
-        padding:0,
     }
 });
 

@@ -11,19 +11,15 @@ export default function App() {
 
 
     const handleAddProduct = () => {
-        console.log('CAMERA 44444');
         setHasCameraOpen(true);
     }
 
     const handleRemoveProduct = (product) => {
-        console.log("REMOVE PORDUCT" +
-            "")
         setProducts(products.filter(p => p.id !== product.id))
 
     }
 
     const handleTakePhoto = (product) => {
-        console.log('Product', product);
         setHasCameraOpen(false);
         setProducts(products => [...products, product])
     }

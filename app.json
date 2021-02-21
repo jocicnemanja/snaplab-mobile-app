@@ -4,9 +4,9 @@
     "slug": "scan4carcinogens",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/snaplabicon.png",
+    "icon": "./assets/adaptive-icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/snap-splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
