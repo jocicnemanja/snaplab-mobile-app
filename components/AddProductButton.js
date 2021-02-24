@@ -11,7 +11,7 @@ const AddProductButton = ({onAddProduct}) => {
     return (
         <View style={styles.addProductBtn}>
             <TouchableOpacity onPress={handleAddProduct}>
-                <Entypo name="plus" size={50} color="black"/>
+                <Entypo name="plus" size={50} color="white"/>
             </TouchableOpacity>
         </View>
     );
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         left: "75%",
         top: "85%",
         position: 'absolute',
-        backgroundColor: "white",
+        backgroundColor: "mediumseagreen",
         borderRadius: 100,
         padding: 5,
         elevation: 5,

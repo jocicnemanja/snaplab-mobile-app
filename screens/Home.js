@@ -19,15 +19,17 @@ const Home = ({onAddProduct, onProductRemove, products}) => {
         </View>
         :
         <View style={styles.screenMessage}>
+            <View style={{flexDirection: "row", }} >
+                <Text style={styles.title}>Take picture. </Text><Text style={styles.word} >Stay healthy!</Text>
+            </View>
             <Text style={styles.description}>Click on "+" button, it will open camera, then take a picture of the
                 product ingredients. It is usually located on the back of the product.</Text>
-            <Text style={styles.description}>Take a picture. Stay healthy!</Text>
         </View>
 
     return (
-        <View style={{flex:1}}>
+        <View style={{flex: 1}}>
             {view}
-            <AddProductButton onAddProduct={handleAddProduct} />
+            <AddProductButton onAddProduct={handleAddProduct}/>
         </View>
     );
 }
@@ -36,21 +38,30 @@ const Home = ({onAddProduct, onProductRemove, products}) => {
 const styles = StyleSheet.create({
     screenMessage: {
         flex: 1,
-        flexDirection: 'column',
+        flexDirection:"column",
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: "snow",
+        alignItems: "center",
+        backgroundColor: "ghostwhite",
     },
     screen: {
         flex: 1,
     },
-    description: {
+    title: {
         color: "black",
-        fontSize: 15,
+        fontSize: 25,
         fontWeight: "bold",
-        textAlign: 'center',
-        padding: "3%",
-        lineHeight:20
+    },
+    word:{
+        color: "mediumseagreen",
+        fontSize: 25,
+        fontWeight: "bold",
+    },
+    description: {
+        color: "grey",
+        fontSize: 15,
+        paddingVertical: "5%",
+        paddingHorizontal: "5%",
+        lineHeight: 20,
     },
 });
 

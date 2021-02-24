@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         paddingHorizontal: 10,
         paddingVertical: 10,
-        backgroundColor: "snow",
+        backgroundColor: "ghostwhite",
     },
 });
 

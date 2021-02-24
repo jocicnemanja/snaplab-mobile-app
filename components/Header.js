@@ -16,8 +16,9 @@ const Header = () => {
 const styles = StyleSheet.create({
     header: {
         height: 90,
-        paddingTop:36,
-        justifyContent: 'center',
+        paddingTop:30,
+        justifyContent:"center",
+        paddingHorizontal:10,
         alignItems: "center",
         flexDirection: "row",
         backgroundColor: "white",
@@ -31,8 +32,8 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     logo: {
-        width: 120,
-        height: 120,
+        width: 100,
+        height: 180,
     },
 });
 

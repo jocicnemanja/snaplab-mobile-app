@@ -38,7 +38,7 @@ const TakePhoto = ({onTakePhoto}) => {
         }
     }
     return (
-        <SafeAreaView style={styles.cameraContainer}>
+        <SafeAreaView style={styles.cameraScreen}>
             <Camera onCameraReady={() => console.log('Camera ready')} style={styles.camera}
                     type={Camera.Constants.Type.back} ratio={"16:9"}
                     ref={(cam) => {
@@ -82,15 +82,14 @@ const TakePhoto = ({onTakePhoto}) => {
 export default TakePhoto;
 
 const styles = StyleSheet.create({
-
-    cameraContainer: {
+    cameraScreen: {
         flex: 1,
         justifyContent: "flex-end",
     },
     camera: {
         flex: 1,
     },
-    cameraMessageContainer: {
+    cameraMessage: {
         flex: 1,
         justifyContent: "center",
         backgroundColor: 'black',
