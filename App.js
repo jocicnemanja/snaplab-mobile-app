@@ -49,7 +49,7 @@ export default function App() {
         } else if (screen === 'productReport') {
             return (
                 <View style={styles.screen}>
-                    <Header/>
+                    <Header headerWithButtons={true} />
                     <ProductReport onSaveProductReport={handleSaveProductReport}/>
                 </View>
             )

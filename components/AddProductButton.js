@@ -27,6 +27,13 @@ const styles = StyleSheet.create({
         backgroundColor: "mediumseagreen",
         borderRadius: 100,
         padding: 5,
+        shadowColor: "black",
+        shadowOffset: {
+            width:0,
+            height:2
+        },
+        shadowRadius:6,
+
         elevation: 5,
     }
 });

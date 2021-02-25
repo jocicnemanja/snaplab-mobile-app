@@ -65,16 +65,16 @@ const TakePhoto = ({onTakePhoto}) => {
                             product</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={handleTakePhotoPres}>
+                <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress={handleTakePhotoPres}>
+                    <View style={styles.button}>
                         <Svg height="70px" width="70px" viewBox="0 0 100 100">
                             <Circle cx="50" cy="50" r="45" stroke="whitesmoke" strokeWidth="5.5"/>
                             <Circle cx="50" cy="50" r="40" strokeWidth="2.5" fill="whitesmoke"/>
                         </Svg>
-                    </TouchableOpacity>
-                </View>
+                    </View>
+                </TouchableOpacity>
             </Camera>
         </SafeAreaView>);
 }
