@@ -1,4 +1,4 @@
-Scan4carcingens
+Snaplab
 ===
 
 This is a small app that detects carcinogen ingredient on some product by taking picture of ingredients back on the product
