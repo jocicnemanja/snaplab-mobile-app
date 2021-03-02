@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "scan4carcinogens",
-    "slug": "scan4carcinogens",
+    "name": "snaplab",
+    "slug": "snaplab",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/adaptive-icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash1.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
