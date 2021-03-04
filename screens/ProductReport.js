@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import {
-  StyleSheet, View, Image, Text, FlatList
+  StyleSheet, View, ImageBackground, Text, FlatList
 } from 'react-native';
 import colors from '../colors';
 
-const ProductReport = ({ onSaveProductReport }) => {
+const ProductReport = ({
+  product,
+  onSaveProductReport
+}) => {
 
+  console.log('PROD', product.photo.uri);
   const [ingredients, setIngredients] = useState([{
     id: 1,
     title: 'Aqua'
@@ -29,13 +33,23 @@ const ProductReport = ({ onSaveProductReport }) => {
     onSaveProductReport();
   };
 
+  // const getImage = () => {
+  //   console.log('PROUDCT', product);
+  //   if (product) {
+  //     return (
+  //
+  //     );
+  //   }
+  //   return null;
+  // };
+
   return (
     <View style={styles.productReportScreen}>
       <View style={styles.picture}>
-        <Image
-          source={require('../assets/nivea-mock.jpg')}
+        <ImageBackground
+          source={{ uri: product.photo && product.photo.uri }}
           style={styles.image}
-          resizeMode="contain"
+          resizeMode="cover"
         />
       </View>
       <View style={styles.report}>
@@ -52,7 +66,7 @@ const ProductReport = ({ onSaveProductReport }) => {
               <Text style={styles.badgeGood}>Good </Text>
             </View>
           )}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
         />
       </View>
 
@@ -72,6 +86,10 @@ const styles = StyleSheet.create({
   report: {
     flex: 5,
     backgroundColor: colors.primaryBackground,
+  },
+  image: {
+    width: '100%',
+    height: '100%'
   },
   title: {
     paddingHorizontal: 10,

@@ -7,6 +7,7 @@ import ProductReport from './screens/ProductReport';
 
 export default function App() {
   const [screen, setScreen] = useState('home');
+  const [product, setProduct] = useState(null);
   const [products, setProducts] = useState([]);
 
   const handleAddProduct = () => {
@@ -18,6 +19,7 @@ export default function App() {
   };
 
   const handleTakePhoto = (product) => {
+    setProduct(product);
     setScreen('productReport');
     setProducts((products) => [...products, product]);
   };
@@ -38,18 +40,20 @@ export default function App() {
           />
         </View>
       );
-    } if (screen === 'camera') {
+    }
+    if (screen === 'camera') {
       return (
         <View style={styles.screen}>
           <Header />
           <TakePhoto onTakePhoto={handleTakePhoto} />
         </View>
       );
-    } if (screen === 'productReport') {
+    }
+    if (screen === 'productReport') {
       return (
         <View style={styles.screen}>
           <Header headerWithButtons />
-          <ProductReport onSaveProductReport={handleSaveProductReport} />
+          <ProductReport product={product} onSaveProductReport={handleSaveProductReport} />
         </View>
       );
     }

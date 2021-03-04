@@ -5,9 +5,12 @@ import {
 import { Camera } from 'expo-camera';
 import Svg, { Circle } from 'react-native-svg';
 import colors from '../colors';
+import CameraPreview from './CameraPreview';
 
 const TakePhoto = ({ onTakePhoto }) => {
   const [hasPermission, setHasPermission] = useState(null);
+  const [previewVisible, setPreviewVisible] = useState(false);
+  const [capturedImage, setCapturedImage] = useState(null);
 
   let camera = null;
   useEffect(() => {
@@ -16,6 +19,27 @@ const TakePhoto = ({ onTakePhoto }) => {
       setHasPermission(status === 'granted');
     })();
   }, []);
+
+  const takePicture = async () => {
+    if (!camera) return;
+    const photo = await camera.takePictureAsync();
+    setPreviewVisible(true);
+    setCapturedImage(photo);
+  };
+
+  const evaluatePhoto = async (uri) => {
+    // const formData = new FormData();
+    // formData.append('image', uri);
+    //
+    // const res = await fetch('https://snaplab-306315.ew.r.appspot.com/report', {
+    //   method: 'POST',
+    //   body: formData,
+    //   header: {
+    //     'content-type': 'multipart/form-data',
+    //   },
+    // });
+    // return res;
+  };
 
   if (hasPermission === null) {
     return <View />;
@@ -32,50 +56,71 @@ const TakePhoto = ({ onTakePhoto }) => {
       };
       camera.takePictureAsync(options)
         .then((photo) => {
-          console.log('Picture taken', photo.uri);
-          console.log('Picture taken', photo.base64);
+          console.log('Picture taken1', photo.uri);
+          // console.log('Picture taken123', photo.base64);
           onTakePhoto({
             id: Math.random()
               .toString(),
-            title: 'Nivea krema'
+            title: 'Nivea krema',
+            photo
           });
           return photo;
         })
         .catch((e) => console.log('My ERROR', e));
     }
   };
-  return (
-    <SafeAreaView style={styles.cameraScreen}>
-      <Camera
-        onCameraReady={() => console.log('Camera ready')}
-        style={styles.camera}
-        type={Camera.Constants.Type.back}
-        ratio="16:9"
-        ref={(cam) => {
-          camera = cam;
-        }}
-      >
-        <View style={styles.cameraMessage}>
-          <TouchableOpacity style={styles.message}>
-            <Text style={styles.cameraMessageText}>
-              Take a photo of the ingredients on the back of the
-              product
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <TouchableOpacity
-          style={styles.buttonContainer}
-          onPress={handleTakePhotoPres}
+
+  const view = () => {
+    if (previewVisible && capturedImage) {
+      return (
+        <CameraPreview
+          photo={capturedImage}
+          onCapturedPhotoNext={() => onTakePhoto({
+            id: Math.random()
+              .toString(),
+            title: 'Nivea krema',
+            photo: capturedImage
+          })}
+        />
+      );
+    }
+    return (
+      <SafeAreaView style={styles.cameraScreen}>
+        <Camera
+          onCameraReady={() => console.log('Camera ready')}
+          style={styles.camera}
+          type={Camera.Constants.Type.back}
+          ratio="16:9"
+          ref={(cam) => {
+            camera = cam;
+          }}
         >
-          <View style={styles.button}>
-            <Svg height="70px" width="70px" viewBox="0 0 100 100">
-              <Circle cx="50" cy="50" r="45" stroke="whitesmoke" strokeWidth="5.5" />
-              <Circle cx="50" cy="50" r="40" strokeWidth="2.5" fill="whitesmoke" />
-            </Svg>
+          <View style={styles.cameraMessage}>
+            <TouchableOpacity style={styles.message}>
+              <Text style={styles.cameraMessageText}>
+                Take a photo of the ingredients on the back of the
+                product
+              </Text>
+            </TouchableOpacity>
           </View>
-        </TouchableOpacity>
-      </Camera>
-    </SafeAreaView>
+          <TouchableOpacity
+            style={styles.buttonContainer}
+            onPress={takePicture}
+          >
+            <View style={styles.button}>
+              <Svg height="70px" width="70px" viewBox="0 0 100 100">
+                <Circle cx="50" cy="50" r="45" stroke="whitesmoke" strokeWidth="5.5" />
+                <Circle cx="50" cy="50" r="40" strokeWidth="2.5" fill="whitesmoke" />
+              </Svg>
+            </View>
+          </TouchableOpacity>
+        </Camera>
+      </SafeAreaView>
+    );
+
+  };
+  return (
+    view()
   );
 };
 
