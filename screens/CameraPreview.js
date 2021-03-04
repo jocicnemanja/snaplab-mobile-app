@@ -2,13 +2,11 @@ import React from 'react';
 import {
   ImageBackground, Text, TouchableOpacity, View
 } from 'react-native';
-import { Camera } from 'expo-camera';
 
 const CameraPreview = ({
   photo,
   onCapturedPhotoNext
 }) => {
-  console.log('sdsfds', photo);
   return (
     <>
       <View>

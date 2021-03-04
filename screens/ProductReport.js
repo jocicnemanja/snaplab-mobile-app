@@ -9,7 +9,7 @@ const ProductReport = ({
   onSaveProductReport
 }) => {
 
-  console.log('PROD', product.photo.uri);
+  console.log('PROD', product.photoUri);
   const [ingredients, setIngredients] = useState([{
     id: 1,
     title: 'Aqua'
@@ -32,22 +32,12 @@ const ProductReport = ({
   const handleSaveProductReport = () => {
     onSaveProductReport();
   };
-
-  // const getImage = () => {
-  //   console.log('PROUDCT', product);
-  //   if (product) {
-  //     return (
-  //
-  //     );
-  //   }
-  //   return null;
-  // };
-
+  console.log('PRODUCT 433333344433333', product);
   return (
     <View style={styles.productReportScreen}>
       <View style={styles.picture}>
         <ImageBackground
-          source={{ uri: product.photo && product.photo.uri }}
+          source={{ uri: product.photoUri && product.photoUri }}
           style={styles.image}
           resizeMode="cover"
         />
@@ -55,15 +45,18 @@ const ProductReport = ({
       <View style={styles.report}>
         <Text style={styles.title}>Complete list of ingredients</Text>
         <FlatList
-          data={ingredients}
+          data={product.ingredients}
           renderItem={(itemData) => (
             <View style={styles.listReportItem}>
               <Text
                 style={styles.listReportItemText}
               >
-                {itemData.item.title}
+                {itemData.item.label}
               </Text>
-              <Text style={styles.badgeGood}>Good </Text>
+              <Text style={styles.badgeGood}>
+                {itemData.item.type}
+                {' '}
+              </Text>
             </View>
           )}
           keyExtractor={(item) => item.id.toString()}
