@@ -37,6 +37,7 @@ const Home = ({
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    backgroundColor: colors.primaryBackground
   },
   screenMessageTitle: {
     flexDirection: 'row',
