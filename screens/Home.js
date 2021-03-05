@@ -1,66 +1,46 @@
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  StyleSheet, Text, View, TouchableOpacity
+} from 'react-native';
 import React from 'react';
-import ProductList from '../components/ProductList';
-import AddProductButton from '../components/AddProductButton';
 import colors from '../colors';
 
 const Home = ({
-  onAddProduct,
-  onProductRemove,
-  products
+  start
 }) => {
 
-  const handleAddProduct = () => {
-    onAddProduct();
+  const handleStart = () => {
+    start();
   };
 
-  const handleRemoveProduct = (product) => {
-    onProductRemove(product);
-  };
-
-  const view = products.length > 0
-    ? (
+  return (
+    <View style={styles.screen}>
+      <View style={styles.screen} />
       <View style={styles.screen}>
-        <ProductList
-          onProductRemove={(product) => handleRemoveProduct(product)}
-          products={products}
-        />
-      </View>
-    )
-    : (
-      <View style={styles.screenMessage}>
         <View style={styles.screenMessageTitle}>
           <Text style={styles.title}>Take picture. </Text>
           <Text style={styles.word}>Stay healthy!</Text>
         </View>
         <Text style={styles.description}>
-          Click on ➕ button it will open camera, then take a picture of the
+          Click on "Let's start" button it will open camera, then take a picture of the
           product ingredients, on the back of the product.
         </Text>
       </View>
-    );
-
-  return (
-    <View style={styles.screen}>
-      {view}
-      <AddProductButton onAddProduct={handleAddProduct} />
+      <View style={styles.btnContainer}>
+        <TouchableOpacity onPress={handleStart} style={styles.appButtonContainer}>
+          <Text style={styles.appButtonText}>Let's start</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  screenMessage: {
+  screen: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.primaryBackground,
   },
   screenMessageTitle: {
     flexDirection: 'row',
-  },
-  screen: {
-    flex: 1,
+    justifyContent: 'center',
   },
   title: {
     color: colors.title,
@@ -81,6 +61,27 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'justify'
   },
+  btnContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    paddingBottom: 30
+  },
+  appButtonContainer: {
+    width: '80%',
+    elevation: 5,
+    backgroundColor: colors.primary,
+    borderRadius: 20,
+    paddingVertical: 12,
+    paddingHorizontal: 15
+  },
+  appButtonText: {
+    fontSize: 15,
+    lineHeight: 20,
+    color: colors.whiteText,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+  }
 });
 
 export default Home;

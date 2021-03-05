@@ -6,33 +6,22 @@ import colors from '../colors';
 
 const ProductReport = ({
   product,
-  onSaveProductReport
 }) => {
 
-  console.log('PROD', product.photoUri);
-  const [ingredients, setIngredients] = useState([{
-    id: 1,
-    title: 'Aqua'
-  }, {
-    id: 2,
-    title: 'Aluminuimum'
-  }, {
-    id: 3,
-    title: 'Charolhydatre'
-  }, {
-    id: 4,
-    title: 'Isoceteth-20'
-  }, {
-    id: 5,
-    title: 'arafinum Liqudium'
-  }, {
-    id: 6,
-    title: 'Butylene Glycol'
-  }]);
-  const handleSaveProductReport = () => {
-    onSaveProductReport();
+  const getStylesForIngredientType = (ingredientType) => {
+    const style = {
+      borderRadius: 100,
+      paddingVertical: 5,
+      paddingHorizontal: 10,
+      color: colors.whiteText,
+      fontWeight: 'bold',
+    };
+    if (ingredientType === 'good') {
+      return { ...style, backgroundColor: colors.primary };
+    }
+    return { ...style, backgroundColor: colors.danger };
   };
-  console.log('PRODUCT 433333344433333', product);
+
   return (
     <View style={styles.productReportScreen}>
       <View style={styles.picture}>
@@ -53,7 +42,7 @@ const ProductReport = ({
               >
                 {itemData.item.label}
               </Text>
-              <Text style={styles.badgeGood}>
+              <Text style={getStylesForIngredientType(itemData.item.type)}>
                 {itemData.item.type}
                 {' '}
               </Text>
@@ -101,36 +90,4 @@ const styles = StyleSheet.create({
   listReportItemText: {
     fontWeight: 'bold',
   },
-  badgeDangerous: {
-    borderRadius: 100,
-    backgroundColor: 'red',
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    color: colors.whiteText,
-    fontWeight: 'bold',
-  },
-  badgeWarring: {
-    borderRadius: 100,
-    backgroundColor: 'darkorange',
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    color: 'white',
-    fontWeight: 'bold',
-  },
-  badgeGood: {
-    borderRadius: 100,
-    backgroundColor: colors.primary,
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    color: 'white',
-    fontWeight: 'bold',
-  },
-  badgeNeutral: {
-    borderRadius: 100,
-    backgroundColor: 'grey',
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    color: 'white',
-    fontWeight: 'bold',
-  }
 });

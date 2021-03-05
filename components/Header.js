@@ -6,14 +6,25 @@ import colors from '../colors';
 
 const logo = require('../assets/logo.png');
 
-const Header = ({ headerWithButtons = false }) => {
+const Header = ({
+  headerWithButtons = false,
+  onRepeat,
+  onExit,
+}) => {
+
+  const handleRepeat = () => {
+    onRepeat();
+  };
+  const handleExit = () => {
+    onExit();
+  };
   const header = () => {
     if (headerWithButtons) {
       return (
         <View style={styles.headerWithButtons}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleRepeat}>
             <View style={styles.closeReportBtn}>
-              <Text style={styles.btnCloseText}>Close</Text>
+              <Text style={styles.btnCloseText}>Repeat</Text>
             </View>
           </TouchableOpacity>
           <Image
@@ -21,9 +32,9 @@ const Header = ({ headerWithButtons = false }) => {
             style={styles.logo}
             resizeMode="contain"
           />
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleExit}>
             <View style={styles.saveReportBtn}>
-              <Text style={styles.btnSaveText}>Save</Text>
+              <Text style={styles.btnSaveText}>Exit</Text>
             </View>
           </TouchableOpacity>
         </View>
