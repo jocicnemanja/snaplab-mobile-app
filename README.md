@@ -33,6 +33,10 @@ npm install
 npm run start 
 ```
 ## Screenshots
-![Alt text](./screenshots/screen1.jpg)
+![Alt text](./screenshots/screen1.jpg)![Alt text](./screenshots/screen2.jpg)![Alt text](./screenshots/screen3.jpg)![Alt text](./screenshots/screen4.jpg)![Alt text](./screenshots/screen5.jpg)
+
+
+
+
 
 
