@@ -33,6 +33,6 @@ npm install
 npm run start 
 ```
 ## Screenshots
-![Alt text]screenshots/screen1.jpg)
+![Alt text](./screenshots/screen1.jpg)
 
 
