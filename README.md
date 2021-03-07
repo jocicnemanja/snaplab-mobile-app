@@ -13,11 +13,22 @@ Project is created with:
 * Google Cloud Vision API (Image to text)
 
 ## Setup
+Before starting the app you need to setup Firebase and Google Cloud Vision API 
 
+Enter in snaplab-app directory
 ```
 npm install 
 ```
 
 ```
-npm start 
+npm run start 
+```
+
+Enter in snaplab-server directory
+```
+npm install 
+```
+
+```
+npm run start 
 ```
